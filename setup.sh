@@ -3,90 +3,56 @@
 # applications and services for initial setup
 # for updating initial linux distro
 
-sudo apt-get update
-sudo apt-get upgrade
-
-
-#installing lxqt
-
-#sudo apt install lxqt sddm
-
-
-#install xfce
-
-sudo apt install xfce sddm
-
-#installing snapd
-
-sudo apt install snapd
-sudo apt install snap
-
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 #installing draw.io
 
 sudo snap install drawio
 
-
-#installing remind
-
-sudo apt install remind
-
-
 #installing microsoft teams
 
-sudo snap install teams
+sudo snap install teams -y
 
+#installing python3 and python2.7
 
-#install brave browser
-
-sudo apt install curl
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update
-sudo apt install brave-browser
-
-
-#installing python3
-
-sudo apt install python3
-
+sudo apt install python3 -y
+sudo apt install python2.7 -y
 
 #installing etcher
 
-wget -O https://github.com/balena-io/etcher/releases/download/v1.13.1/balenaEtcher-1.13.1-x64.AppImage?d_id=cac9d4a5-4dfc-46f1-9cd2-8a61c8cdf6f4&s_id=1674513369210
-chmod 775 balenaEtcher-1.13.1-x64.AppImage
-sudo ./balenaEtcher-1.13.1-x64.AppImage
+sudo wget -O https://github.com/balena-io/etcher/releases/download/v1.13.1/balenaEtcher-1.13.1-x64.AppImage?d_id=cac9d4a5-4dfc-46f1-9cd2-8a61c8cdf6f4&s_id=1674513369210 -y
+sudo chmod 775 balenaEtcher-1.13.1-x64.AppImage
+sudo ./balenaEtcher-1.13.1-x64.AppImage -y
 
 #start in downloads directory
 
-cd /downloads
-
+cd Downloads/
 
 #installing spotify
 
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update && sudo apt-get install spotify-client
+sudo apt-get update && sudo apt-get install spotify-client -y
 
 
 #installing zoom
 
-sudo snap install zoom-client
+sudo snap install zoom-client -y
 
-#installing nvidia drivers
+#installing amd radeon 6950xt firmware and drivers
 
-#sudo add-apt-repository ppa:graphics-drivers/ppa
-#sudo apt update
-#sudo apt upgrade -y
-#sudo apt install nvidia-graphics-drivers-390 nvidia-settings vdpauinfo vulkan libvdpau
+sudo wget https://repo.radeon.com/amdgpu-install/23.40.2/ubuntu/jammy/amdgpu-install_6.0.60002-1_all.deb
+sudo dpkg -i amdgpu-install_6.0.60002-1_all.deb -y
+sudo amdgpu-install -y
 
 #installing clamav
 
-sudo apt install clamav clamav-daemon
-sudo systemctl stop clamav-freshclam
-sudo freshclam
-sudo systemctl start clamav-freshclam
-sudo systemctl enable clamav-freshclam
+sudo apt install clamav clamav-daemon -y
+sudo systemctl stop clamav-freshclam -y
+sudo freshclam -y
+sudo systemctl start clamav-freshclam -y
+sudo systemctl enable clamav-freshclam -y
 
 #installing clamtk
 
@@ -111,59 +77,101 @@ sudo apt update && sudo apt install virtualbox-6.0
 
 #installing gnome tweaks
 
-sudo apt install gnome-tweaks
+sudo apt install gnome-tweaks -y
 
 
 #installing visual studio code
 
-sudo snap install code --classic
+sudo snap install code --classic -y
 
 
 #installing neofetch
 
-sudo apt install neofetch
+sudo apt install neofetch -y
 
 
 #installing syncthing
 
 echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
-sudo apt update
-sudo apt install syncthing
+sudo apt update -y
+sudo apt install syncthing -y
 sudo systemctl enable syncthing@sdick.service
 sudo systemctl start syncthing@sdick.service
 
 
 # vmware install
 
-sudo apt update
-sudo apt install gcc build-essential
-sudo ./VMware-Wrkstation-Full-16.1.2-17966106.x86_64.bundle
+sudo apt update -y
+sudo apt install gcc build-essential -y
+sudo ./VMware-Wrkstation-Full-16.1.2-17966106.x86_64.bundle -y
 
 
 # vmware tools
 
-sudo apt install open-vm-tools
-sudo apt install open-vm-tools-desktop
+sudo apt install open-vm-tools -y
+sudo apt install open-vm-tools-desktop -y
 
 
 # nmap install
 
-sudo apt install nmap
+sudo apt install nmap -y
 
 
 # installing discord
 
 wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
-sudo dpkg -i /path/to/discord.deb
+sudo dpkg -i /path/to/discord.deb -y
 
 
 # download flameshot
 
-sudo apt install flameshot
-chmod +x Flameshot-*.x86_64.AppImage
+sudo apt install flameshot -y
+sudo chmod +x Flameshot-*.x86_64.AppImage
 
 
 # install libre applications
 
-sudo apt install libreoffice
+sudo apt install libreoffice -y
+
+
+#install steam
+
+sudo add-apt-repository multiverse -y
+sudo apt update -y
+sudo apt install steam -y
+
+
+#installing play on linux
+
+sudo wget https://www.playonlinux.com/script_files/PlayOnLinux/4.3.4/PlayOnLinux_4.3.4.deb
+sudo dpkg -i PlayOnLinux_4.3.4.deb -y
+sudo apt update -y
+
+#installing lutris
+
+sudo wget https://github.com/lutris/lutris/releases/download/v0.5.16/lutris_0.5.16_all.deb
+sudo dpkg -i lutris_0.5.16_all.deb -y
+sudo apt update -y
+
+#installing wine fromhq from repos
+
+sudo dpkg --add-architecture i386 -y
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources
+sudo apt update -y
+sudo apt install --install-recommends winehq-stable -y
+
+
+#download lug-helper script for star citizen
+
+sudo wget https://github.com/starcitizen-lug/lug-helper/archive/refs/tags/v2.15.zip
+sudo gunzip lug-helper-v2.15.zip
+cd lug-helper-2.15
+sudo ./lug-helper.sh
+
+
+#updating and upgrading packages
+
+sudo apt update -y && sudo apt upgrade -y
